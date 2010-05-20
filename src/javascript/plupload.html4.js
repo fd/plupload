@@ -103,6 +103,17 @@
 
 					form.appendChild(input);
 				});
+				plupload.each(file.multipart_params, function(value, name) {
+					var input = document.createElement('input');
+
+					plupload.extend(input, {
+						type : 'hidden',
+						name : name,
+						value : value
+					});
+
+					form.appendChild(input);
+				});
 
 				iframe = document.createElement('iframe');
 				iframe.setAttribute('src', url + ':""'); // javascript:"" for HTTPS issue on IE6, uses a variable to make an ignore for jslint

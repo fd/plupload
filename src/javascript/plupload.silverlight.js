@@ -320,7 +320,16 @@
 				});
 
 				uploader.bind("UploadFile", function(up, file) {
-					var settings = up.settings, resize = settings.resize || {};
+					var settings = up.settings, resize = settings.resize || {}, multipart_params={};
+
+
+					plupload.each(settings.multipart_params, function(value, key){
+						multipart_params[key] = value;
+					});
+					
+					plupload.each(file.multipart_params, function(value, key){
+						multipart_params[key] = value;
+					});
 
 					getSilverlightObj().UploadFile(
 						lookup[file.id],
@@ -331,7 +340,7 @@
 							image_height : resize.height,
 							image_quality : resize.quality || 90,
 							multipart : !!settings.multipart,
-							multipart_params : settings.multipart_params || {},
+							multipart_params : multipart_params,
 							headers : settings.headers
 						})
 					);

@@ -1195,6 +1195,14 @@
 		 * @see plupload
 		 */
 		self.status = 0;
+
+		/**
+		 * Object with file specific multipart params
+		 *
+		 * @property multipart_params
+		 * @type Object
+		 */
+		self.multipart_params = {};
 	};
 
 	/**

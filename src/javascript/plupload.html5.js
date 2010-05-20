@@ -224,6 +224,13 @@
 
 							multipartBlob += value + crlf;
 						});
+						
+						plupload.each(file.multipart_params, function(value, name) {
+							multipartBlob += dashdash + boundary + crlf +
+								'Content-Disposition: form-data; name="' + name + '"' + crlf + crlf;
+
+							multipartBlob += value + crlf;
+						});
 
 						// Build RFC2388 blob
 						multipartBlob += dashdash + boundary + crlf +

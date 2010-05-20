@@ -168,6 +168,15 @@
 
 								builder.append(value + crlf);
 							});
+							
+							plupload.each(file.multipart_params, function(value, name) {
+								builder.append(
+									dashdash + boundary + crlf +
+									'Content-Disposition: form-data; name="' + name + '"' + crlf + crlf
+								);
+
+								builder.append(value + crlf);
+							});
 
 							// Add file header
 							builder.append(
