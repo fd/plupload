@@ -141,7 +141,7 @@
 				getFlashObj().setFileFilters(uploader.settings.filters, uploader.settings.multi_selection);
 
 				uploader.bind("UploadFile", function(up, file) {
-					var settings = up.settings, multipart_params={};
+					var settings = up.settings, multipart_params={}, url;
 					
 					plupload.each(settings.multipart_params, function(value, key){
 						multipart_params[key] = value;
@@ -150,8 +150,10 @@
 					plupload.each(file.multipart_params, function(value, key){
 						multipart_params[key] = value;
 					});
+					
+					url = file.upload_url || settings.url;
 
-					getFlashObj().uploadFile(lookup[file.id], plupload.buildUrl(settings.url, {name : file.target_name || file.name}), {
+					getFlashObj().uploadFile(lookup[file.id], plupload.buildUrl(url, {name : file.target_name || file.name}), {
 						chunk_size : settings.chunk_size,
 						width : resize.width,
 						height : resize.height,

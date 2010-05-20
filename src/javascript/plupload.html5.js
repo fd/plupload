@@ -291,7 +291,7 @@
 					}
 				};
 
-				xhr.open("post", plupload.buildUrl(up.settings.url, {name : file.target_name || file.name}), true);
+				xhr.open("post", plupload.buildUrl(file.upload_url || up.settings.url, {name : file.target_name || file.name}), true);
 				xhr.setRequestHeader('Content-Type', 'application/octet-stream');
 
 				// Set custom headers

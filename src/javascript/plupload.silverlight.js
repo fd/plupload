@@ -333,7 +333,7 @@
 
 					getSilverlightObj().UploadFile(
 						lookup[file.id],
-						plupload.buildUrl(up.settings.url, {name : file.target_name || file.name}),
+						plupload.buildUrl(file.upload_url || up.settings.url, {name : file.target_name || file.name}),
 						jsonSerialize({
 							chunk_size : settings.chunk_size,
 							image_width : resize.width,

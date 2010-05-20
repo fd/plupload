@@ -1203,6 +1203,14 @@
 		 * @type Object
 		 */
 		self.multipart_params = {};
+
+		/**
+		 * Url for uploading this specific file to
+		 *
+		 * @property upload_url
+		 * @type String
+		 */
+		self.upload_url = null;
 	};
 
 	/**

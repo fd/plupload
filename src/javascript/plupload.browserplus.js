@@ -155,7 +155,7 @@
 					    chunkSize = up.settings.chunk_size, loadProgress, chunkStack = [];
 
 					function uploadFile(chunk, chunks) {
-						var chunkFile, multipart_params={};
+						var chunkFile, multipart_params={}, url;
 
 						// Stop upload if file is maked as failed
 						if (file.status == plupload.FAILED) {
@@ -179,9 +179,11 @@
 						plupload.each(file.multipart_params, function(value, key){
 							multipart_params[key] = value;
 						});
+						
+						url = file.upload_url || up.settings.url;
 
 						browserPlus.Uploader.upload({
-							url : plupload.buildUrl(up.settings.url, urlParams),
+							url : plupload.buildUrl(url, urlParams),
 							files : {file : chunkFile},
 							cookies : document.cookies,
 							postvars : multipart_params,
